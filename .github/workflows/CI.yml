@@ -47,6 +47,9 @@ jobs:
       - name: Test
         run: |
           cargo test
+          
+      - name: Collect coverage
+        uses: "docker://kcov/kcov"
 
       - name: Release
         if: github.event_name == 'release' && !contains(matrix.rust, 'nightly')
